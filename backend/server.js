@@ -2,28 +2,17 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const expenseRoutes = require('./routes/expenses');
 
-// Load environment variables
 dotenv.config();
-
-// Connect to database
 connectDB();
-
 const app = express();
 
-// Middleware
-app.use(cors()); // Allow requests from our frontend
-app.use(express.json()); // Allow us to accept JSON data in the body
+app.use(cors());
+app.use(express.json());
 
-// API Routes
-app.use('/api/expenses', expenseRoutes);
-
-// Basic route
-app.get('/', (req, res) => {
-  res.send('Expense Tracker API Running');
-});
+app.use('/api/expenses', require('./routes/expenses'));
+// Add this line for user routes
+app.use('/api/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

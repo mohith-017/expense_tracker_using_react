@@ -1,0 +1,75 @@
+.auth-form-container {
+  margin: 3rem auto;
+  width: 95%;
+  max-width: 25rem;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  text-align: center;
+}
+
+.auth-form-container h1 {
+  text-align: center;
+  color: #333;
+}
+
+.form-control {
+  margin-bottom: 0.5rem;
+}
+
+.form-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #555;
+  text-align: left;
+}
+
+.form-control input {
+  font: inherit;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 20px);
+  padding: 0.5rem;
+}
+
+.form-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+}
+
+.form-actions button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.form-actions .toggle-btn {
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  padding: 0.25rem;
+}
+
+.form-actions .toggle-btn:hover {
+  background-color: transparent;
+  color: #0056b3;
+}
+
+.error-text {
+  color: #d9534f;
+}

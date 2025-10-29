@@ -1,47 +1,64 @@
 const Expense = require('../models/Expense');
 
-// @desc    Get all expenses
+// @desc    Get all expenses for the logged-in user
 // @route   GET /api/expenses
-exports.getExpenses = async (req, res) => {
+// @access  Private
+const getExpenses = async (req, res) => {
   try {
-    const expenses = await Expense.find().sort({ date: -1 }); // Get newest first
-    res.status(200).json({
-      success: true,
-      count: expenses.length,
-      data: expenses,
-    });
+    // Only find expenses that belong to the logged-in user
+    const expenses = await Expense.find({ user: req.user.id });
+    res.json(expenses);
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      error: 'Server Error',
-    });
+    res.status(500).json({ message: err.message });
   }
 };
 
-// @desc    Add an expense
+// @desc    Add a new expense for the logged-in user
 // @route   POST /api/expenses
-exports.addExpense = async (req, res) => {
+// @access  Private
+const addExpense = async (req, res) => {
+  const { description, amount, date } = req.body;
+
   try {
-    const { title, amount, date, category } = req.body;
-
-    const newExpense = await Expense.create(req.body);
-
-    res.status(201).json({
-      success: true,
-      data: newExpense,
+    const newExpense = new Expense({
+      description,
+      amount,
+      date,
+      user: req.user.id, // Associate expense with the user
     });
+
+    const expense = await newExpense.save();
+    res.status(201).json(expense);
   } catch (err) {
-    if (err.name === 'ValidationError') {
-      const messages = Object.values(err.errors).map(val => val.message);
-      return res.status(400).json({
-        success: false,
-        error: messages,
-      });
-    } else {
-      res.status(500).json({
-        success: false,
-        error: 'Server Error',
-      });
-    }
+    res.status(400).json({ message: err.message });
   }
+};
+
+// @desc    Delete an expense for the logged-in user
+// @route   DELETE /api/expenses/:id
+// @access  Private
+const deleteExpense = async (req, res) => {
+  try {
+    const expense = await Expense.findById(req.params.id);
+
+    if (!expense) {
+      return res.status(404).json({ message: 'Expense not found' });
+    }
+
+    // Check if the expense belongs to the user
+    if (expense.user.toString() !== req.user.id) {
+      return res.status(401).json({ message: 'User not authorized' });
+    }
+
+    await expense.remove();
+    res.json({ message: 'Expense removed' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = {
+  getExpenses,
+  addExpense,
+  deleteExpense,
 };

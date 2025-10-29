@@ -72,3 +72,11 @@
   background-color: #0ea5e9;
   /* Lighter info color */
 }
+
+
+.expense-form label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: white; /* Add this line */
+}

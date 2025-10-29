@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react'; // Import useContext
+import AuthContext from '../context/AuthContext'; // Import AuthContext
 import ExpenseItem from './ExpenseItem';
 import './ExpenseList.css';
 
-const ExpenseList = (props) => {
-  // Show a message if there are no expenses
-  if (props.items.length === 0) {
-    return <h2 className="expenses-list-fallback">Found no expenses.</h2>;
+const ExpenseList = ({ expenses, onDeleteExpense }) => {
+  const { token } = useContext(AuthContext); // Get token
+
+  const deleteExpenseHandler = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/api/expenses/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`, // Add auth header
+        },
+      });
+      onDeleteExpense(); // Re-fetch expenses
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  if (expenses.length === 0) {
+    return <p className="expense-list-empty">No expenses found.</p>;
   }
 
   return (
-    <ul className="expenses-list">
-      {/* We use .map() to transform our array of expense objects
-        into an array of <ExpenseItem /> components
-      */}
-      {props.items.map((expense) => (
+    <ul className="expense-list">
+      {expenses.map((expense) => (
         <ExpenseItem
-          key={expense.id}
-          title={expense.title}
+          key={expense._id}
+          id={expense._id}
+          description={expense.description}
           amount={expense.amount}
           date={expense.date}
-          category={expense.category}
+          onDelete={deleteExpenseHandler}
         />
       ))}
     </ul>
