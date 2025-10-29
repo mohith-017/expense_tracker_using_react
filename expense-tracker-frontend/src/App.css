@@ -1,0 +1,14 @@
+.app-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem 2rem 2rem 2rem;
+  /* Remove all background and shadow - it's just a layout wrapper now */
+}
+
+h1 {
+  text-align: center;
+  color: var(--light-text-admin);
+  /* Light text from admin.css */
+  margin-bottom: 2rem;
+  font-weight: 600;
+}

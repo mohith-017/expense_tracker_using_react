@@ -1,0 +1,83 @@
+.dashboard-container {
+  padding: 1rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Frosted glass card style from admin.css .stat-card */
+.summary-card {
+  background: var(--frost-background-admin);
+  border: 1px solid var(--border-color-admin);
+  backdrop-filter: blur(var(--frost-blur-admin));
+  -webkit-backdrop-filter: blur(var(--frost-blur-admin));
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Accent borders from admin.css .stat-card */
+.summary-card:nth-of-type(1) {
+  border-top: 4px solid var(--error-color);
+}
+
+.summary-card:nth-of-type(2) {
+  border-top: 4px solid var(--info-color);
+}
+
+.summary-card:nth-of-type(3) {
+  border-top: 4px solid var(--warning-color);
+}
+
+.summary-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--light-text-secondary);
+  /* Light text */
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--light-text-admin);
+  /* Light text */
+}
+
+h2 {
+  text-align: center;
+  color: var(--light-text-admin);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color-admin);
+}
+
+/* Frosted glass card for the chart */
+.chart-container {
+  position: relative;
+  height: 400px;
+  max-width: 600px;
+  margin: 0 auto;
+  /* Frosted glass card style from admin.css .data-section */
+  background: var(--frost-background-admin);
+  border: 1px solid var(--border-color-admin);
+  backdrop-filter: blur(var(--frost-blur-admin));
+  -webkit-backdrop-filter: blur(var(--frost-blur-admin));
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/*
+  NOTE: The chart text (legend, title) will be dark and hard to read.
+  This is set in Dashboard.js. You told me not to change JS files.
+  If you want to fix this, you must edit src/components/Dashboard.js
+  and add 'color: "#f1f5f9"' to the chartOptions 'legend' and 'title' plugins.
+*/

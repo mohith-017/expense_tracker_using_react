@@ -1,0 +1,92 @@
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0;
+  /* Remove old background/shadow */
+  background: transparent;
+  box-shadow: none;
+  /* Style like admin.css table row */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+}
+
+/* Last item has no border */
+.expense-item:last-of-type {
+  border-bottom: none;
+}
+
+/* Hover effect from admin.css table */
+.expense-item:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.expense-item-description {
+  flex: 1;
+  margin: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.expense-item-description h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--light-text-admin);
+  /* Light text */
+  font-weight: 600;
+}
+
+.expense-item-category {
+  font-size: 0.8rem;
+  color: var(--admin-accent);
+  /* Accent text */
+  background-color: var(--admin-secondary);
+  /* Dark slate bg */
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  align-self: flex-start;
+  font-weight: 600;
+}
+
+.expense-item-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--success-color);
+  /* Use success color for money */
+  padding: 0.5rem 1rem;
+  /* Remove old red background */
+  background-color: transparent;
+  border: none;
+}
+
+/* Dark theme date box */
+.expense-date {
+  display: flex;
+  flex-direction: column;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid var(--border-color-admin);
+  background-color: var(--admin-secondary);
+  /* Dark slate bg */
+  color: var(--light-text-secondary);
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-date-month {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.expense-date-year {
+  font-size: 0.8rem;
+}
+
+.expense-date-day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--light-text-admin);
+}

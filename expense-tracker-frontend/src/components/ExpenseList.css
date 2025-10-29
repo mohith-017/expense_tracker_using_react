@@ -1,0 +1,19 @@
+.expenses-list {
+  list-style: none;
+  padding: 1.5rem;
+  margin: 0;
+  /* Frosted glass card style from admin.css .data-section */
+  background: var(--frost-background-admin);
+  border: 1px solid var(--border-color-admin);
+  backdrop-filter: blur(var(--frost-blur-admin));
+  -webkit-backdrop-filter: blur(var(--frost-blur-admin));
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.expenses-list-fallback {
+  color: var(--light-text-admin);
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 600;
+}

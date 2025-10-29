@@ -1,0 +1,43 @@
+/* --- Base Styles & DARK Frosted Glass --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  /* Colors from your admin.css */
+  --admin-primary: #1e293b;
+  /* Darker Slate */
+  --admin-secondary: #334155;
+  /* Slate */
+  --admin-accent: #64748b;
+  /* Lighter Slate */
+  --frost-background-admin: rgba(255, 255, 255, 0.1);
+  /* Slightly less visible frost */
+  --border-color-admin: rgba(255, 255, 255, 0.2);
+  --frost-blur-admin: 10px;
+  /* Slightly more blur */
+  --light-text-admin: #f1f5f9;
+  /* Off-white */
+  --light-text-secondary: #cbd5e1;
+  /* Light grey text default */
+
+  /* Status Colors from admin.css */
+  --success-color: #22c55e;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  /* Blue */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Font from admin.css */
+  background: linear-gradient(120deg, #334155, #1e293b);
+  /* Dark Slate Gradient from admin.css */
+  background-attachment: fixed;
+  color: var(--light-text-secondary);
+  /* Light grey text default from admin.css */
+  margin: 0;
+}

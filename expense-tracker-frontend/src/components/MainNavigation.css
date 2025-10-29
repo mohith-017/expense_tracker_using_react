@@ -1,0 +1,50 @@
+.main-header {
+  /* Frosted glass header from admin.css */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 15px 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-header nav {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-header li {
+  margin: 0;
+}
+
+.main-header a {
+  text-decoration: none;
+  color: #e2e8f0;
+  /* Light text from admin.css */
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 0.25rem;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 3px solid transparent;
+}
+
+.main-header a:hover {
+  color: #ffffff;
+}
+
+.main-header a.active {
+  color: #ffffff;
+  border-bottom: 3px solid var(--warning-color);
+  /* Use accent color for active link */
+}
